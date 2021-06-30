@@ -1,0 +1,26 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: ecomm-frontend
+  labels:
+    app: ecomm-app
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: ecomm-app
+        tier: frontend
+    spec:
+      containers:
+      - name: ecomm-frontend
+        image: [FRONTEND_IMAGE_IDENTIFIER]
+        imagePullPolicy: Always
+        ports:
+        - name: http-server
+          containerPort: 8080
+        env:
+          - name: GCLOUD_PROJECT
+            value: [GCLOUD_PROJECT]
+          - name: GCLOUD_BUCKET
+            value: [GCLOUD_BUCKET]

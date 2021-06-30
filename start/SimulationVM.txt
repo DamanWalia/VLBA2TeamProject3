@@ -1,0 +1,4 @@
+sudo apt update
+sudo apt install apache2-utils -y
+
+ab -n 100000 -c 10000 http://ip-addr

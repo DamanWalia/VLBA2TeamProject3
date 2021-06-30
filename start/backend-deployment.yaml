@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: ecomm-backend
+  labels:
+    app: ecomm-app
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: ecomm-app
+        tier: backend
+    spec:
+      containers:
+      - name: ecomm-backend
+        image: [BACKEND_IMAGE_IDENTIFIER]
+        imagePullPolicy: Always
+        env:
+          - name: GCLOUD_PROJECT
+            value: [GCLOUD_PROJECT]
+          - name: GCLOUD_BUCKET
+            value: [GCLOUD_BUCKET]
