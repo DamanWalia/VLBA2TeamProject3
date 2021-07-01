@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ecomm-frontend
@@ -6,6 +6,10 @@ metadata:
     app: ecomm-app
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: ecomm-app
+      tier: frontend
   template:
     metadata:
       labels:
@@ -19,6 +23,11 @@ spec:
         ports:
         - name: http-server
           containerPort: 8080
+        resources:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 500m
         env:
           - name: GCLOUD_PROJECT
             value: [GCLOUD_PROJECT]
