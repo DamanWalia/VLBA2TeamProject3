@@ -8,5 +8,5 @@ spec:
     kind: Deployment
     name: ecomm-frontend
   minReplicas: 1
-  maxReplicas: 3
-  targetCPUUtilizationPercentage: 50
+  maxReplicas: 8
+  targetCPUUtilizationPercentage: 20
